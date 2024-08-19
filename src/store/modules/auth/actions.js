@@ -14,12 +14,11 @@ export default {
     const responseData = await response.json();
     if (!response.ok) {
       const error = new Error(
-        responseData.message ||
-          'Failed to authenticate. Check your Login data!'
+        responseData.message || 'Failed to authenticate. Check your Login data!'
       );
       throw error;
     }
-    console.log(responseData,"responseData");
+    console.log(responseData, 'responseData');
     context.commit('setUser', {
       token: responseData.idToken,
       userId: responseData.localId,
@@ -50,6 +49,13 @@ export default {
       token: responseData.idToken,
       userId: responseData.localId,
       tokenExpiration: responseData.expiresIn,
+    });
+  },
+  logout(context) {
+    context.commit('setUser', {
+      token: null,
+      userId: null,
+      tokenExpiration: null,
     });
   },
 };
