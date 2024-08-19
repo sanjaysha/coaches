@@ -7,11 +7,11 @@ export default {
         body: JSON.stringify({
           email: payload.email,
           password: payload.password,
-          retuenSecureToken: true,
+          returnSecureToken: true,
         }),
       }
     );
-    const responseData = response.json();
+    const responseData = await response.json();
     if (!response.ok) {
       const error = new Error(
         responseData.message ||
@@ -19,6 +19,7 @@ export default {
       );
       throw error;
     }
+    console.log(responseData,"responseData");
     context.commit('setUser', {
       token: responseData.idToken,
       userId: responseData.localId,
@@ -33,11 +34,11 @@ export default {
         body: JSON.stringify({
           email: payload.email,
           password: payload.password,
-          retuenSecureToken: true,
+          returnSecureToken: true,
         }),
       }
     );
-    const responseData = response.json();
+    const responseData = await response.json();
     if (!response.ok) {
       const error = new Error(
         responseData.message ||

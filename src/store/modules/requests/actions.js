@@ -15,7 +15,6 @@ export default {
       );
       throw error;
     }
-    console.log(responseData, 'responseData');
     newRequest.id = responseData.name;
     newRequest.coachId = payload.coachId;
 
@@ -24,8 +23,7 @@ export default {
 
   async fetchRequests(context) {
     const coachId = context.rootGetters.userId;
-    const token = context.getters.token;
-
+    const token = context.rootGetters.token;
     const response = await fetch(
       `https://coaches-2cd8b-default-rtdb.asia-southeast1.firebasedatabase.app/requests/${coachId}.json?auth=`+token
     );
