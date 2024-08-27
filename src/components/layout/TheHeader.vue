@@ -21,7 +21,8 @@ export default{
   },
   methods:{
     handleLogout(){
-      this.$storee.dispatch('logout');
+      this.$store.dispatch('logout');
+      this.$router.replace('/coaches');
     }
   }
 }

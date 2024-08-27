@@ -7,10 +7,10 @@ export default {
     return {
       token: null,
       userId: null,
-      tokenExpiration: null
+      didAutoLogout : false
     };
   },
   actions,
   getters,
-  mutations,
+  mutations
 };
